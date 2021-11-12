@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Box from "components/common/Box";
+import { Flex } from "components/common/flex";
+import Footer from "components/common/Footer/Footer";
+import Header from "components/common/Header/Header";
+import Giveaway from "components/common/Sidebar/Giveaway/Giveaway";
+import SidebarHeader from "components/common/Sidebar/Header/Header";
+import Sidebar from "components/common/Sidebar/Sidebar";
+import Game from "pages/Game";
+import Home from "pages/Home";
+import Store from "pages/Store";
+import User from "pages/User";
+
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Flex className="App">
+        <Sidebar>
+          <SidebarHeader />
+          <Giveaway />
+        </Sidebar>
+        <Box flexGrow={1} display="grid" gridTemplateRows="auto 1fr auto">
+          <Header>Header</Header>
+          <Switch>
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/game" component={Game} />
+            <Route path="/user/:page?/:id?" component={User} />
+            <Route path="/store" component={Store} />
+            <Route component={() => <Redirect to="/" />} />
+          </Switch>
+
+          <Footer />
+        </Box>
+      </Flex>
+    </BrowserRouter>
   );
 }
 
