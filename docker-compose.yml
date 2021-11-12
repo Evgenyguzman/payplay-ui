@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  app:
+    image: "payplay-ui:latest"
+    build:
+      context: .
+    container_name: ui
+    ports:
+      - "3000:3000"
