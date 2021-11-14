@@ -52,7 +52,7 @@ jobs:
           version: "${{ github.sha }}"
           chart: "./chart"
           namespace: example-helm
-          release: production-myapp
+          release: production-payplay-ui
           value-files: "./config/production.yml"
         env:
           KUBECONFIG_FILE: "${{ secrets.KUBECONFIG }}"

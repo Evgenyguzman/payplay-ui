@@ -4,10 +4,10 @@ canary:
   production_environment: true
   required_contexts: ["build"]
   environment: production
-  description: 'Canary'
+  description: "Canary"
   payload:
     value_files: ["./config/production.yml", "./config/_common.yml"]
-    release: production-myapp
+    release: production-payplay-ui
     namespace: example-helm
     track: canary
     values:
@@ -20,12 +20,12 @@ production:
   production_environment: true
   required_contexts: ["build"]
   environment: production
-  description: 'Production'
+  description: "Production"
   payload:
     value_files: ["./config/production.yml", "./config/_common.yml"]
     # Remove the canary deployment if it exists when doing a full prod deploy.
     remove_canary: true
-    release: production-myapp
+    release: production-payplay-ui
     namespace: example-helm
     track: stable
     values:
@@ -36,7 +36,7 @@ staging:
   auto_deploy_on: refs/heads/master
   required_contexts: ["build"]
   environment: staging
-  description: 'Staging'
+  description: "Staging"
   payload:
     value_files: ["./config/staging.yml", "./config/_common.yml"]
     release: staging-myapp
@@ -55,7 +55,7 @@ review:
   required_contexts: ["build"]
 
   environment: pr${{ pr }}
-  description: 'Review'
+  description: "Review"
   payload:
     value_files: ["./config/review.yml", "./config/_common.yml"]
     release: review-myapp-${{ pr }}
