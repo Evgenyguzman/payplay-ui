@@ -41,9 +41,9 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  # type: ClusterIP
-  type: NodePort
-  port: 3000
+  type: LoadBalancer
+  port: 80
+  targetPort: 3000
 
 ingress:
   enabled: false
